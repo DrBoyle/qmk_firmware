@@ -20,6 +20,7 @@ enum custom_keycodes {
   XBBOX,
   YBBOX,
   ZBBOX,
+  CHAN,
   //AE Macros
   LOOPO,
   LOOPP,
@@ -75,7 +76,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     case EMAIL_B:
 			if (record->event.pressed) {
-				SEND_STRING("dr.boyle@pm.me");
+				SEND_STRING("stephen.j.boyle@pm.me");
 			} else {
 			}
 		break;
@@ -148,6 +149,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 			}
 		break;
 
+    case CHAN:
+			if (record->event.pressed) {
+				SEND_STRING("ch("SS_LSFT("'")SS_LSFT("'")")"SS_TAP(X_LEFT)SS_TAP(X_LEFT)"../");
+			} else {
+			}
+		break;
+
     //AE Macros
 
     case LOOPO:
@@ -191,23 +199,23 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-  //QWERTY Standard //reversed super
+  //QWERTY Standard
   [0] = LAYOUT_ortho_4x12(
 
     KC_TAB,   KC_Q,     KC_W,     KC_E,     KC_R,   KC_T,     KC_Y,    KC_U,   KC_I,     KC_O,     KC_P,     KC_BSPC,
     KC_ESC,   KC_A,     KC_S,     KC_D,     KC_F,   KC_G,     KC_H,    KC_J,   KC_K,     KC_L,     KC_SCLN,  KC_QUOT,
     KC_LSFT,  KC_Z,     KC_X,     KC_C,     KC_V,   KC_B,     KC_N,    KC_M,   KC_COMM,  KC_DOT,   KC_SLSH,  KC_SFTENT,
-    MO(8),    KC_LGUI,  KC_LALT,  KC_LCTL,  MO(4),  KC_SPC,   KC_SPC,  MO(5),  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT
+    MO(8),    KC_LCTL,  KC_LALT,  KC_LGUI,  MO(4),  KC_SPC,   KC_SPC,  MO(5),  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT
 
   ),
 
-  //QWERTY Mac
+  //QWERTY Mac //reversed super
   [1] = LAYOUT_ortho_4x12(
 
     KC_TAB,   KC_Q,     KC_W,     KC_E,     KC_R,   KC_T,     KC_Y,    KC_U,   KC_I,     KC_O,     KC_P,     KC_BSPC,
     KC_ESC,   KC_A,     KC_S,     KC_D,     KC_F,   KC_G,     KC_H,    KC_J,   KC_K,     KC_L,     KC_SCLN,  KC_QUOT,
     KC_LSFT,  KC_Z,     KC_X,     KC_C,     KC_V,   KC_B,     KC_N,    KC_M,   KC_COMM,  KC_DOT,   KC_SLSH,  KC_SFTENT,
-    MO(8),    KC_LCTL,  KC_LALT,  KC_LGUI,  MO(4),  KC_SPC,   KC_SPC,  MO(5),  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT
+    MO(8),    KC_LGUI,  KC_LALT,  KC_LCTL,  MO(4),  KC_SPC,   KC_SPC,  MO(5),  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT
 
   ),
 
@@ -286,7 +294,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    YBBOX,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
-    KC_NO,    ZBBOX,    XBBOX,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
+    KC_NO,    ZBBOX,    XBBOX,    CHAN,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO
 
   ),

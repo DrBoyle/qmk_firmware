@@ -1,2 +1,1 @@
-# The Default Planck Layout
-
+# GlueUsers Planck Layout
