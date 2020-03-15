@@ -16,6 +16,7 @@ enum custom_keycodes {
   COMMA,
   SGOOD,
   THANK,
+  SUDO,
   //Houdini Macros
   XBBOX,
   YBBOX,
@@ -123,6 +124,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case THANK:
 			if (record->event.pressed) {
 				SEND_STRING("Thanks!"SS_TAP(X_ENT)SS_TAP(X_ENT)"-Stephen");
+			} else {
+			}
+		break;
+
+    case SUDO:
+			if (record->event.pressed) {
+				SEND_STRING("sudo ");
 			} else {
 			}
 		break;
@@ -283,7 +291,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [8] = LAYOUT_ortho_4x12(
 
     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    THANK,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
-    KC_NO,    OSL(10),  SGOOD,    KC_NO,    KC_NO,    KC_NO,    OSL(9),   KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
+    KC_NO,    OSL(10),  SUDO,     KC_NO,    KC_NO,    SGOOD,    OSL(9),   KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO
 
