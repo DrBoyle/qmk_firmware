@@ -29,10 +29,10 @@ enum custom_keycodes {
   OSHOOT,
   BOUNCE,
   //tmux Macros
-  GHOST,
+  TMUX,
   QMK,
   LOBSTER,
-  TESTV
+  GHOST
 };
 
 //qmk vars
@@ -235,15 +235,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	    break;
 
         //tmux macros
-
-        case GHOST:
+        case TMUX:
 	        if (record->event.pressed) {
-                SEND_STRING(new_window);
-                SEND_STRING(bast_ghost);
-                SEND_STRING("cd ~/ghost");
-                SEND_STRING(t_ent);
-                SEND_STRING(term_clear);
-            } else {
+                SEND_STRING(tmux_start);
+	        } else {
 	        }
 	    break;
 
@@ -257,6 +252,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	        }
 	    break;
 
+
         case LOBSTER:
 	        if (record->event.pressed) {
                 SEND_STRING(ssh_lobster);
@@ -265,10 +261,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	        }
 	    break;
 
-        case TESTV:
+
+        case GHOST:
 	        if (record->event.pressed) {
-                SEND_STRING("testv");
-	        } else {
+                SEND_STRING(new_window);
+                SEND_STRING(bast_ghost);
+                SEND_STRING("cd ~/ghost");
+                SEND_STRING(t_ent);
+                SEND_STRING(term_clear);
+            } else {
 	        }
 	    break;
 
@@ -391,7 +392,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //Macros //tmux
   [11] = LAYOUT_ortho_4x12(
 
-    KC_NO,    QMK,      KC_NO,    KC_NO,    KC_NO,    TESTV,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
+    KC_NO,    QMK,      KC_NO,    KC_NO,    KC_NO,    TMUX,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    GHOST,    KC_NO,    KC_NO,    KC_NO,    LOBSTER,  KC_NO,    KC_NO,
     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO
