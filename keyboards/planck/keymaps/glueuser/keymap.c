@@ -27,179 +27,250 @@ enum custom_keycodes {
   LOOPP,
   WIGGLE,
   OSHOOT,
-  BOUNCE
+  BOUNCE,
+  //tmux Macros
+  GHOST,
+  QMK,
+  LOBSTER,
+  TESTV
 };
 
+//qmk vars
+char t_ent[] = SS_TAP(X_ENT);
+
+//term vars
+char term_clear[] = "clear"SS_TAP(X_ENT);
+char fish[] = "fish"SS_TAP(X_ENT);
+char ssh_lobster[] = "ssh lobster"SS_TAP(X_ENT);
+char bast_nginx[] = "sudo bastille console nginx"SS_TAP(X_ENT);
+char bast_ghost[] = "sudo bastille console ghost"SS_TAP(X_ENT);
+
+//dir vars
+char qmk_repo[] = "cd ~/repo/qmk_firmware/"SS_TAP(X_ENT);
+
+//file vars
+char qmk_km[] = "vim ~/repo/qmk_firmware/keyboards/planck/keymaps/glueuser/keymap.c"SS_TAP(X_ENT);
+
+//git vars
+char git_pull[] = "git pull"SS_TAP(X_ENT);
+
+// tmux vars
+char tmux_start[] = "tmux"SS_TAP(X_ENT);
+char split_h[] = SS_LCTL(SS_TAP(X_A))SS_LSFT(SS_TAP(X_MINS));
+char split_v[] = SS_LCTL(SS_TAP(X_A))SS_LSFT(SS_TAP(X_BSLS));
+char new_window[] = SS_LCTL(SS_TAP(X_A))SS_TAP(X_C);
+char resize_up6[] = SS_LCTL(SS_TAP(X_A))SS_TAP(X_UP)SS_LCTL(SS_TAP(X_A))SS_TAP(X_UP)SS_LCTL(SS_TAP(X_A))SS_TAP(X_UP)SS_LCTL(SS_TAP(X_A))SS_TAP(X_UP)SS_LCTL(SS_TAP(X_A))SS_TAP(X_UP)SS_LCTL(SS_TAP(X_A))SS_TAP(X_UP);
+char resize_down6[] = SS_LCTL(SS_TAP(X_A))SS_TAP(X_DOWN)SS_LCTL(SS_TAP(X_A))SS_TAP(X_DOWN)SS_LCTL(SS_TAP(X_A))SS_TAP(X_DOWN)SS_LCTL(SS_TAP(X_A))SS_TAP(X_DOWN)SS_LCTL(SS_TAP(X_A))SS_TAP(X_DOWN)SS_LCTL(SS_TAP(X_A))SS_TAP(X_DOWN);
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  switch (keycode) {
+    switch (keycode) {
 
-    case EMAIL_A:
-      if (record->event.pressed) {
-        SEND_STRING("boyle1984@gmail.com");
-      } else {
-      }
-    break;
+        case EMAIL_A:
+            if (record->event.pressed) {
+                SEND_STRING("boyle1984@gmail.com");
+            } else {
+            }
+        break;
 
-		case NAME_F:
-			if (record->event.pressed) {
-				SEND_STRING("Stephen");
-			} else {
-			}
-		break;
+	    case NAME_F:
+	        if (record->event.pressed) {
+	            SEND_STRING("Stephen");
+	        } else {
+	        }
+	    break;
 
-		case NAME_L:
-			if (record->event.pressed) {
-				SEND_STRING("Boyle");
-			} else {
-			}
-		break;
+	    case NAME_L:
+	        if (record->event.pressed) {
+	            SEND_STRING("Boyle");
+	        } else {
+	        }
+	    break;
 
-		case CITY:
-			if (record->event.pressed) {
-				SEND_STRING("Los Angeles");
-			} else {
-			}
-		break;
+        case CITY:
+	        if (record->event.pressed) {
+	            SEND_STRING("Los Angeles");
+            } else {
+	        }
+	    break;
 
-    case GMAIL:
-			if (record->event.pressed) {
-				SEND_STRING("@gmail.com");
-			} else {
-			}
-		break;
+        case GMAIL:
+	        if (record->event.pressed) {
+	            SEND_STRING("@gmail.com");
+	        } else {
+	        }
+	    break;
 
-    case HTTPS:
-			if (record->event.pressed) {
-				SEND_STRING("https://");
-			} else {
-			}
-		break;
+        case HTTPS:
+	        if (record->event.pressed) {
+	            SEND_STRING("https://");
+	        } else {
+	        }
+	    break;
 
-    case EMAIL_B:
-			if (record->event.pressed) {
-				SEND_STRING("stephen.j.boyle@pm.me");
-			} else {
-			}
-		break;
+        case EMAIL_B:
+	        if (record->event.pressed) {
+	            SEND_STRING("stephen.j.boyle@pm.me");
+	        } else {
+	        }
+	    break;
 
-    case CUTALL:
-      if (record->event.pressed) {
+        case CUTALL:
+            if (record->event.pressed) {
                 SEND_STRING(SS_LCTL("ax"));
-      }
-    break;
+            }
+        break;
 
-    case COPYALL:
-      if (record->event.pressed) {
+        case COPYALL:
+            if (record->event.pressed) {
                 SEND_STRING(SS_LCTL("ac"));
-      }
-    break;
+            }
+        break;
 
-		case PASTEALL:
-      if (record->event.pressed) {
+	    case PASTEALL:
+            if (record->event.pressed) {
                 SEND_STRING(SS_LCTL("av"));
-      }
-    break;
+            }
+        break;
 
-    case P_QUOTE:
-			if (record->event.pressed) {
-				SEND_STRING("("SS_LSFT("'")SS_LSFT("'")")"SS_TAP(X_LEFT)SS_TAP(X_LEFT));
-			} else {
-			}
-		break;
+        case P_QUOTE:
+	        if (record->event.pressed) {
+	            SEND_STRING("("SS_LSFT("'")SS_LSFT("'")")"SS_TAP(X_LEFT)SS_TAP(X_LEFT));
+	        } else {
+	        }
+	    break;
 
-    case COMMA:
-			if (record->event.pressed) {
-				SEND_STRING(", ");
-			} else {
-			}
-		break;
+        case COMMA:
+	        if (record->event.pressed) {
+	            SEND_STRING(", ");
+	        } else {
+	        }
+	    break;
 
-    case SGOOD:
-			if (record->event.pressed) {
-				SEND_STRING("Sounds good. Thanks!"SS_TAP(X_ENT)SS_TAP(X_ENT)"-Stephen");
-			} else {
-			}
-		break;
+        case SGOOD:
+	        if (record->event.pressed) {
+	            SEND_STRING("Sounds good. Thanks!");
+	        } else {
+	        }
+	    break;
 
-    case THANK:
-			if (record->event.pressed) {
-				SEND_STRING("Thanks!"SS_TAP(X_ENT)SS_TAP(X_ENT)"-Stephen");
-			} else {
-			}
-		break;
+        case THANK:
+	        if (record->event.pressed) {
+	            SEND_STRING("Thanks!");
+	        } else {
+	        }
+	    break;
 
-    case SUDO:
-			if (record->event.pressed) {
-				SEND_STRING("sudo ");
-			} else {
-			}
-		break;
+        case SUDO:
+	        if (record->event.pressed) {
+	            SEND_STRING("sudo ");
+	        } else {
+	        }
+	    break;
 
-    //Houdini Macros
-    case XBBOX:
-			if (record->event.pressed) {
-				SEND_STRING("bbox("SS_LSFT("'")SS_LSFT("'")", D_XSIZE)"SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)"../");
-			} else {
-			}
-		break;
+        //Houdini Macros
 
-    case YBBOX:
-			if (record->event.pressed) {
-				SEND_STRING("bbox("SS_LSFT("'")SS_LSFT("'")", D_YSIZE)"SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)"../");
-			} else {
-			}
-		break;
+        case XBBOX:
+	        if (record->event.pressed) {
+	            SEND_STRING("bbox("SS_LSFT("'")SS_LSFT("'")", D_XSIZE)"SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)"../");
+	        } else {
+	        }
+	    break;
 
-    case ZBBOX:
-			if (record->event.pressed) {
-				SEND_STRING("bbox("SS_LSFT("'")SS_LSFT("'")", D_ZSIZE)"SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)"../");
-			} else {
-			}
-		break;
+        case YBBOX:
+	        if (record->event.pressed) {
+	            SEND_STRING("bbox("SS_LSFT("'")SS_LSFT("'")", D_YSIZE)"SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)"../");
+	        } else {
+	        }
+	    break;
 
-    case CHAN:
-			if (record->event.pressed) {
-				SEND_STRING("ch("SS_LSFT("'")SS_LSFT("'")")"SS_TAP(X_LEFT)SS_TAP(X_LEFT)"../");
-			} else {
-			}
-		break;
+        case ZBBOX:
+	        if (record->event.pressed) {
+	            SEND_STRING("bbox("SS_LSFT("'")SS_LSFT("'")", D_ZSIZE)"SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)"../");
+	        } else {
+	        }
+	    break;
 
-    //AE Macros
+        case CHAN:
+	        if (record->event.pressed) {
+	            SEND_STRING("ch("SS_LSFT("'")SS_LSFT("'")")"SS_TAP(X_LEFT)SS_TAP(X_LEFT)"../");
+	        } else {
+	        }
+	    break;
 
-    case LOOPO:
-			if (record->event.pressed) {
-				SEND_STRING("loopOut()"SS_TAP(X_LEFT));
-			} else {
-			}
-		break;
+        //AE Macros
 
-    case LOOPP:
-			if (record->event.pressed) {
-				SEND_STRING("loopOut(type=)"SS_TAP(X_LEFT)SS_LSFT("'")SS_LSFT("'")SS_TAP(X_LEFT)"pingpong");
-			} else {
-			}
-		break;
+        case LOOPO:
+	        if (record->event.pressed) {
+	            SEND_STRING("loopOut()"SS_TAP(X_LEFT));
+	        } else {
+	        }
+	    break;
 
-    case WIGGLE:
-			if (record->event.pressed) {
-				SEND_STRING("wiggle(9, 20)"SS_TAP(X_LEFT));
-			} else {
-			}
-		break;
+        case LOOPP:
+	        if (record->event.pressed) {
+	            SEND_STRING("loopOut(type=)"SS_TAP(X_LEFT)SS_LSFT("'")SS_LSFT("'")SS_TAP(X_LEFT)"pingpong");
+	        } else {
+	        }
+	    break;
 
-    case OSHOOT:
-			if (record->event.pressed) {
-				SEND_STRING("freq = 3;"SS_TAP(X_ENT)"decay = 8;"SS_TAP(X_ENT)"strength = 1;"SS_TAP(X_ENT)SS_TAP(X_ENT)"n = 0;"SS_TAP(X_ENT)"if (numKeys > 0){"SS_TAP(X_ENT)"n = nearestKey(time).index;"SS_TAP(X_ENT)"if (key(n).time > time) n--;"SS_TAP(X_ENT)"}"SS_TAP(X_ENT)"if (n > 0){"SS_TAP(X_ENT)"t = time - key(n).time;"SS_TAP(X_ENT)"amp = velocityAtTime(key(n).time - .001)*strength;"SS_TAP(X_ENT)"w = freq*Math.PI*2;"SS_TAP(X_ENT)"value + amp*(Math.sin(t*w)/Math.exp(decay*t)/w);"SS_TAP(X_ENT)"}else"SS_TAP(X_ENT)"value"SS_TAP(X_RGHT)SS_TAP(X_RGHT)SS_TAP(X_BSPC));
-			} else {
-			}
-		break;
+        case WIGGLE:
+	        if (record->event.pressed) {
+	            SEND_STRING("wiggle(9, 20)"SS_TAP(X_LEFT));
+	        } else {
+	        }
+	    break;
 
-    case BOUNCE:
-			if (record->event.pressed) {
-				SEND_STRING("e = .7;"SS_TAP(X_ENT)"g = 5000;"SS_TAP(X_ENT)"nMax = 9;"SS_TAP(X_ENT)SS_TAP(X_ENT)"n = 0;"SS_TAP(X_ENT)"if (numKeys > 0){"SS_TAP(X_ENT)"n = nearestKey(time).index;"SS_TAP(X_ENT)"if (key(n).time > time) n--;"SS_TAP(X_ENT)"}"SS_TAP(X_ENT)"if (n > 0){"SS_TAP(X_ENT)"t = time - key(n).time;"SS_TAP(X_ENT)"v = -velocityAtTime(key(n).time - .001)*e;"SS_TAP(X_ENT)"vl = length(v);"SS_TAP(X_ENT)"if (value instanceof Array){"SS_TAP(X_ENT)"vu = (vl > 0) ? normalize(v) : [0,0,0];"SS_TAP(X_ENT)"}else{"SS_TAP(X_ENT)"vu = (v < 0) ? -1 : 1;"SS_TAP(X_ENT)"}"SS_TAP(X_ENT)SS_TAP(X_TAB)"tCur = 0;"SS_TAP(X_ENT)"segDur = 2*vl/g;"SS_TAP(X_ENT)"tNext = segDur;"SS_TAP(X_ENT)"nb = 1;"SS_TAP(X_ENT)"while (tNext < t && nb <= nMax){"SS_TAP(X_ENT)"vl *= e;"SS_TAP(X_ENT)"segDur *= e;"SS_TAP(X_ENT)"tCur = tNext;"SS_TAP(X_ENT)"tNext += segDur;"SS_TAP(X_ENT)"nb++"SS_TAP(X_ENT)"}"SS_TAP(X_ENT)"if(nb <= nMax){"SS_TAP(X_ENT)"delta = t - tCur;"SS_TAP(X_ENT)"value +  vu*delta*(vl - g*delta/2);"SS_TAP(X_ENT)"}else{"SS_TAP(X_ENT)"value"SS_TAP(X_ENT)"}"SS_TAP(X_ENT)"}else"SS_TAP(X_ENT)"value"SS_TAP(X_RGHT)SS_TAP(X_DOWN)SS_TAP(X_RGHT)SS_TAP(X_RGHT)SS_TAP(X_BSPC)SS_TAP(X_BSPC)SS_TAP(X_BSPC)SS_TAP(X_BSPC)SS_TAP(X_BSPC)SS_TAP(X_BSPC));
-			} else {
-			}
-		break;
+        case OSHOOT:
+	        if (record->event.pressed) {
+	            SEND_STRING("freq = 3;"SS_TAP(X_ENT)"decay = 8;"SS_TAP(X_ENT)"strength = 1;"SS_TAP(X_ENT)SS_TAP(X_ENT)"n = 0;"SS_TAP(X_ENT)"if (numKeys > 0){"SS_TAP(X_ENT)"n = nearestKey(time).index;"SS_TAP(X_ENT)"if (key(n).time > time) n--;"SS_TAP(X_ENT)"}"SS_TAP(X_ENT)"if (n > 0){"SS_TAP(X_ENT)"t = time - key(n).time;"SS_TAP(X_ENT)"amp = velocityAtTime(key(n).time - .001)*strength;"SS_TAP(X_ENT)"w = freq*Math.PI*2;"SS_TAP(X_ENT)"value + amp*(Math.sin(t*w)/Math.exp(decay*t)/w);"SS_TAP(X_ENT)"}else"SS_TAP(X_ENT)"value"SS_TAP(X_RGHT)SS_TAP(X_RGHT)SS_TAP(X_BSPC));
+	        } else {
+	        }
+	    break;
+
+        case BOUNCE:
+	        if (record->event.pressed) {
+	            SEND_STRING("e = .7;"SS_TAP(X_ENT)"g = 5000;"SS_TAP(X_ENT)"nMax = 9;"SS_TAP(X_ENT)SS_TAP(X_ENT)"n = 0;"SS_TAP(X_ENT)"if (numKeys > 0){"SS_TAP(X_ENT)"n = nearestKey(time).index;"SS_TAP(X_ENT)"if (key(n).time > time) n--;"SS_TAP(X_ENT)"}"SS_TAP(X_ENT)"if (n > 0){"SS_TAP(X_ENT)"t = time - key(n).time;"SS_TAP(X_ENT)"v = -velocityAtTime(key(n).time - .001)*e;"SS_TAP(X_ENT)"vl = length(v);"SS_TAP(X_ENT)"if (value instanceof Array){"SS_TAP(X_ENT)"vu = (vl > 0) ? normalize(v) : [0,0,0];"SS_TAP(X_ENT)"}else{"SS_TAP(X_ENT)"vu = (v < 0) ? -1 : 1;"SS_TAP(X_ENT)"}"SS_TAP(X_ENT)SS_TAP(X_TAB)"tCur = 0;"SS_TAP(X_ENT)"segDur = 2*vl/g;"SS_TAP(X_ENT)"tNext = segDur;"SS_TAP(X_ENT)"nb = 1;"SS_TAP(X_ENT)"while (tNext < t && nb <= nMax){"SS_TAP(X_ENT)"vl *= e;"SS_TAP(X_ENT)"segDur *= e;"SS_TAP(X_ENT)"tCur = tNext;"SS_TAP(X_ENT)"tNext += segDur;"SS_TAP(X_ENT)"nb++"SS_TAP(X_ENT)"}"SS_TAP(X_ENT)"if(nb <= nMax){"SS_TAP(X_ENT)"delta = t - tCur;"SS_TAP(X_ENT)"value +  vu*delta*(vl - g*delta/2);"SS_TAP(X_ENT)"}else{"SS_TAP(X_ENT)"value"SS_TAP(X_ENT)"}"SS_TAP(X_ENT)"}else"SS_TAP(X_ENT)"value"SS_TAP(X_RGHT)SS_TAP(X_DOWN)SS_TAP(X_RGHT)SS_TAP(X_RGHT)SS_TAP(X_BSPC)SS_TAP(X_BSPC)SS_TAP(X_BSPC)SS_TAP(X_BSPC)SS_TAP(X_BSPC)SS_TAP(X_BSPC));
+	        } else {
+	        }
+	    break;
+
+        //tmux macros
+
+        case GHOST:
+	        if (record->event.pressed) {
+                SEND_STRING(new_window);
+                SEND_STRING(bast_ghost);
+                SEND_STRING("cd ~/ghost");
+                SEND_STRING(t_ent);
+                SEND_STRING(term_clear);
+            } else {
+	        }
+	    break;
+
+        case QMK:
+	        if (record->event.pressed) {
+                SEND_STRING(new_window);
+                SEND_STRING(qmk_repo);
+                SEND_STRING(git_pull);
+                SEND_STRING(qmk_km);
+	        } else {
+	        }
+	    break;
+
+        case LOBSTER:
+	        if (record->event.pressed) {
+                SEND_STRING(ssh_lobster);
+                SEND_STRING(tmux_start);
+	        } else {
+	        }
+	    break;
+
+        case TESTV:
+	        if (record->event.pressed) {
+                SEND_STRING("testv");
+	        } else {
+	        }
+	    break;
 
 	}
   return true;
@@ -290,8 +361,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //Macros
   [8] = LAYOUT_ortho_4x12(
 
-    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    THANK,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
-    KC_NO,    OSL(10),  SUDO,     KC_NO,    KC_NO,    SGOOD,    OSL(9),   KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
+    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    OSL(11),  KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
+    KC_NO,    OSL(10),  SUDO,     KC_NO,    KC_NO,    SGOOD,    OSL(9),   KC_NO,    THANK,    KC_NO,    KC_NO,    KC_NO,
     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO
 
@@ -313,6 +384,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_NO,    KC_NO,    WIGGLE,   KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    OSHOOT,   LOOPP,    KC_NO,
     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    LOOPO,    KC_NO,    KC_NO,
     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    BOUNCE,   KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
+    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO
+
+  ),
+
+  //Macros //tmux
+  [11] = LAYOUT_ortho_4x12(
+
+    KC_NO,    QMK,      KC_NO,    KC_NO,    KC_NO,    TESTV,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
+    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    GHOST,    KC_NO,    KC_NO,    KC_NO,    LOBSTER,  KC_NO,    KC_NO,
+    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO
 
   )
