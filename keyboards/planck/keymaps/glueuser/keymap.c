@@ -1,7 +1,7 @@
 #include QMK_KEYBOARD_H
 
 enum custom_keycodes {
-  QMKBEST = SAFE_RANGE,
+  TEST = SAFE_RANGE,
   EMAIL_A,
   NAME_F,
   NAME_L,
@@ -22,6 +22,7 @@ enum custom_keycodes {
   YBBOX,
   ZBBOX,
   CHAN,
+  ITERAT,
   //AE Macros
   LOOPO,
   LOOPP,
@@ -37,6 +38,13 @@ enum custom_keycodes {
 
 //qmk vars
 char t_ent[] = SS_TAP(X_ENT);
+
+//press a button many times
+/*char mpress(char press, int npress){
+  for (int a = 0; a == npress; a = a + 1) {
+    return press;
+  }
+}*/
 
 //term vars
 char term_clear[] = "clear"SS_TAP(X_ENT);
@@ -65,12 +73,19 @@ char resize_down6[] = SS_LCTL(SS_TAP(X_A))SS_TAP(X_DOWN)SS_LCTL(SS_TAP(X_A))SS_T
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
 
-        case EMAIL_A:
-            if (record->event.pressed) {
-                SEND_STRING("boyle1984@gmail.com");
-            } else {
-            }
-        break;
+      case TEST:
+          if (record->event.pressed) {
+              SEND_STRING("test@gmail.com");
+          } else {
+          }
+      break;
+
+      case EMAIL_A:
+          if (record->event.pressed) {
+              SEND_STRING("boyle1984@gmail.com");
+          } else {
+          }
+      break;
 
 	    case NAME_F:
 	        if (record->event.pressed) {
@@ -171,31 +186,38 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case XBBOX:
 	        if (record->event.pressed) {
-	            SEND_STRING("bbox("SS_LSFT("'")SS_LSFT("'")", D_XSIZE)"SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)"../");
+	            SEND_STRING("bbox(\"\", D_XSIZE)"SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)"../");
 	        } else {
 	        }
 	    break;
 
         case YBBOX:
 	        if (record->event.pressed) {
-	            SEND_STRING("bbox("SS_LSFT("'")SS_LSFT("'")", D_YSIZE)"SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)"../");
+	            SEND_STRING("bbox(\"\", D_YSIZE)"SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)"../");
 	        } else {
 	        }
 	    break;
 
         case ZBBOX:
 	        if (record->event.pressed) {
-	            SEND_STRING("bbox("SS_LSFT("'")SS_LSFT("'")", D_ZSIZE)"SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)"../");
+	            SEND_STRING("bbox(\"\", D_ZSIZE)"SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)SS_TAP(X_LEFT)"../");
 	        } else {
 	        }
 	    break;
 
         case CHAN:
 	        if (record->event.pressed) {
-	            SEND_STRING("ch("SS_LSFT("'")SS_LSFT("'")")"SS_TAP(X_LEFT)SS_TAP(X_LEFT)"../");
+	            SEND_STRING("ch(\"\")"SS_TAP(X_LEFT)SS_TAP(X_LEFT)"../");
 	        } else {
 	        }
 	    break;
+
+        case ITERAT:
+          if (record->event.pressed) {
+              SEND_STRING("fit(rand(detail(\"../foreach_begin1_metadata1/\", \"iteration\", 0)*9), 0, 1, 0, .5)");
+          } else {
+          }
+      break;
 
         //AE Macros
 
@@ -208,7 +230,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case LOOPP:
 	        if (record->event.pressed) {
-	            SEND_STRING("loopOut(type=)"SS_TAP(X_LEFT)SS_LSFT("'")SS_LSFT("'")SS_TAP(X_LEFT)"pingpong");
+	            SEND_STRING("loopOut(type=\"pingpong\")");
 	        } else {
 	        }
 	    break;
@@ -372,7 +394,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //Macros //Houdini
   [9] = LAYOUT_ortho_4x12(
 
-    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    YBBOX,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
+    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    YBBOX,    KC_NO,    ITERAT,   KC_NO,    KC_NO,    KC_NO,
     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
     KC_NO,    ZBBOX,    XBBOX,    CHAN,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO
