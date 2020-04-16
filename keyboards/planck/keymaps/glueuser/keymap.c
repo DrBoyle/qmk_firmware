@@ -23,6 +23,7 @@ enum custom_keycodes {
   ZBBOX,
   CHAN,
   ITERAT,
+  CENTR,
   //AE Macros
   LOOPO,
   LOOPP,
@@ -219,6 +220,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           }
       break;
 
+        case CENTR:
+          if (record->event.pressed) {
+              SEND_STRING("centroid(\"\")"SS_TAP(X_LEFT)SS_TAP(X_LEFT)"../");
+          } else {
+          }
+      break;
+
         //AE Macros
 
         case LOOPO:
@@ -394,7 +402,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //Macros //Houdini
   [9] = LAYOUT_ortho_4x12(
 
-    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    YBBOX,    KC_NO,    ITERAT,   KC_NO,    KC_NO,    KC_NO,
+    KC_NO,    KC_NO,    KC_NO,    KC_NO,    CENTR,    KC_NO,    YBBOX,    KC_NO,    ITERAT,   KC_NO,    KC_NO,    KC_NO,
     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
     KC_NO,    ZBBOX,    XBBOX,    CHAN,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO
