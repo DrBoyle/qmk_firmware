@@ -30,6 +30,7 @@ enum custom_keycodes {
   WIGGLE,
   OSHOOT,
   BOUNCE,
+  CENTER_AP
   //tmux Macros
   TMUX,
   QMK,
@@ -264,6 +265,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	        }
 	    break;
 
+      case CENTER_AP:
+        if (record->event.pressed) {
+            SEND_STRING("a = sourceRectAtTime();\n\nheight = a.height;\nwidth = a.width;\ntop = a.top;\nleft = a.left;\n\nx = 0;\ny = top + height*.5;\n\n[x , y]");
+        } else {
+        }
+      break;
+
         //tmux macros
         case TMUX:
 	        if (record->event.pressed) {
@@ -414,7 +422,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     KC_NO,    KC_NO,    WIGGLE,   KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    OSHOOT,   LOOPP,    KC_NO,
     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    LOOPO,    KC_NO,    KC_NO,
-    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    BOUNCE,   KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
+    KC_NO,    KC_NO,    KC_NO,    CENTER_AP,KC_NO,    BOUNCE,   KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,
     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO
 
   ),
