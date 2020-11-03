@@ -30,7 +30,7 @@ enum custom_keycodes {
   WIGGLE,
   OSHOOT,
   BOUNCE,
-  CENTER_AP
+  CENTER_AP,
   //tmux Macros
   TMUX,
   QMK,
